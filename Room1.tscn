@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://b58otgc5sbmnh"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_j7l3a"]
+[ext_resource type="Texture2D" uid="uid://0mekdenlh3bh" path="res://icon.svg" id="2_lqi7j"]
+[ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://platform.tscn" id="3_aq2w3"]
+[ext_resource type="Script" path="res://Area2D.gd" id="4_olaom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r34lu"]
+size = Vector2(85, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
+size = Vector2(26, 311)
+
+[node name="StartingRoom" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-3, 531)
+script = ExtResource("1_j7l3a")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+scale = Vector2(100, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-21.5, -22.5)
+shape = SubResource("RectangleShape2D_r34lu")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-20.5, -22.5)
+scale = Vector2(0.679688, 0.648438)
+texture = ExtResource("2_lqi7j")
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Ground" type="Node" parent="Platforms"]
+
+[node name="Platform1" parent="Platforms/Ground" instance=ExtResource("3_aq2w3")]
+position = Vector2(0, 600)
+
+[node name="Platform2" parent="Platforms/Ground" instance=ExtResource("3_aq2w3")]
+position = Vector2(323, 600)
+
+[node name="Platform3" parent="Platforms/Ground" instance=ExtResource("3_aq2w3")]
+position = Vector2(646, 600)
+
+[node name="Platform4" parent="Platforms/Ground" instance=ExtResource("3_aq2w3")]
+position = Vector2(969, 600)
+
+[node name="WallLeft" type="Node" parent="Platforms"]
+
+[node name="Platform1" parent="Platforms/WallLeft" instance=ExtResource("3_aq2w3")]
+position = Vector2(-124, 89)
+rotation = 1.5708
+
+[node name="Platform2" parent="Platforms/WallLeft" instance=ExtResource("3_aq2w3")]
+position = Vector2(-124, 412)
+rotation = 1.5708
+
+[node name="WallRight" type="Node" parent="Platforms"]
+
+[node name="Platform1" parent="Platforms/WallRight" instance=ExtResource("3_aq2w3")]
+position = Vector2(1089, 82)
+rotation = -1.5708
+
+[node name="Cieling" type="Node" parent="Platforms"]
+
+[node name="Platform1" parent="Platforms/Cieling" instance=ExtResource("3_aq2w3")]
+position = Vector2(-4, -107)
+rotation = 3.14159
+
+[node name="Platform2" parent="Platforms/Cieling" instance=ExtResource("3_aq2w3")]
+position = Vector2(319, -107)
+rotation = 3.14159
+
+[node name="Platform3" parent="Platforms/Cieling" instance=ExtResource("3_aq2w3")]
+position = Vector2(643, -107)
+rotation = 3.14159
+
+[node name="Platform4" parent="Platforms/Cieling" instance=ExtResource("3_aq2w3")]
+position = Vector2(965, -107)
+rotation = 3.14159
+
+[node name="Visuals" type="Node" parent="."]
+
+[node name="Shadow1" type="ColorRect" parent="Visuals"]
+offset_left = -4364.0
+offset_top = -2090.0
+offset_right = -168.0
+offset_bottom = 2431.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Shadow2" type="ColorRect" parent="Visuals"]
+offset_left = 1131.0
+offset_top = -2107.0
+offset_right = 5553.0
+offset_bottom = 2425.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Shadow3" type="ColorRect" parent="Visuals"]
+offset_left = 1455.0
+offset_top = -2113.0
+offset_right = 3414.0
+offset_bottom = -63.0
+rotation = 1.5708
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Shadow4" type="ColorRect" parent="Visuals"]
+offset_left = 1593.0
+offset_top = 645.0
+offset_right = 3349.0
+offset_bottom = 2745.0
+rotation = 1.5708
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Exit" type="Area2D" parent="."]
+script = ExtResource("4_olaom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(1168, 470)
+shape = SubResource("RectangleShape2D_nvfan")
+
+[node name="Platform" parent="." instance=ExtResource("3_aq2w3")]
+position = Vector2(900, 204)
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
