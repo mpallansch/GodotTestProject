@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="GodotTestProject"
-run/main_scene="res://StartingRoom.tscn"
+run/main_scene="res://Scenes/StartingRoom.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [autoload]
 
-PlayerVariables="*res://playervariables.tscn"
-SceneManager="*res://SceneManager.gd"
+SceneManager="*res://Scenes/Globals/SceneManager.gd"
+GUI="*res://Scenes/Globals/GUI.tscn"
+PlayerVariables="*res://Scenes/Globals/PlayerVariables.tscn"
 
 [input]
 

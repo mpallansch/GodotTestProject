@@ -12,7 +12,7 @@ func _process(delta):
 	pass
 	
 func random_scene():
-	goto_scene("res://Room" + str(rng.randi_range(1, 2)) + ".tscn")
+	goto_scene("res://Scenes/Room" + str(rng.randi_range(1, 2)) + ".tscn")
 	pass
 
 
