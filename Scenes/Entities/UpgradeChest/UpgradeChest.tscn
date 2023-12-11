@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://brkw28ciokfdn"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/UpgradeChest/UpgradeChest.gd" id="1_cn86l"]
+[ext_resource type="Texture2D" uid="uid://bbnta0spwf5n4" path="res://Scenes/Entities/UpgradeChest/UpgradeChest.png" id="1_suvve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06fiw"]
+size = Vector2(151, 98)
+
+[node name="UpgradeChest" type="Node2D"]
+script = ExtResource("1_cn86l")
+
+[node name="UpgradeChest" type="Sprite2D" parent="."]
+position = Vector2(83, 55)
+scale = Vector2(0.330078, 0.317383)
+texture = ExtResource("1_suvve")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(83.5, 55)
+shape = SubResource("RectangleShape2D_06fiw")
+
+[node name="ShopInterface" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -114.0
+offset_top = -183.0
+offset_right = 292.0
+offset_bottom = -23.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopInterface"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 403.0
+offset_bottom = 163.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopInterface/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

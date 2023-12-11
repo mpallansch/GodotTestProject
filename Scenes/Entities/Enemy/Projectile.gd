@@ -1,7 +1,7 @@
 extends Node2D
 
 const speed = -300
-const damage = 2
+const damage = 10
 
 @onready var area_node = get_node("Area2D")
 
