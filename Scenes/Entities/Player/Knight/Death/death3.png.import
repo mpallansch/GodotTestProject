@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0mekdenlh3bh"
-path="res://.godot/imported/icon.svg-a44167747fb342eaf815b147fb013dac.ctex"
+uid="uid://4h5k4t4tpbqk"
+path="res://.godot/imported/death3.png-81fd183ac80ff242f2347a7a07c15ed0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Entities/Player/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-a44167747fb342eaf815b147fb013dac.ctex"]
+source_file="res://Scenes/Entities/Player/Knight/Death/death3.png"
+dest_files=["res://.godot/imported/death3.png-81fd183ac80ff242f2347a7a07c15ed0.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -1,10 +1,322 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3udb2ngrpat"]
+[gd_scene load_steps=56 format=3 uid="uid://c3udb2ngrpat"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Player/CharacterBody2D.gd" id="1_41m2r"]
-[ext_resource type="Texture2D" uid="uid://0mekdenlh3bh" path="res://Scenes/Entities/Player/icon.svg" id="2_qukv1"]
+[ext_resource type="Texture2D" uid="uid://cdmn3qv8qt1vh" path="res://Scenes/Entities/Player/Knight/Jump/jump1.png" id="2_kmkju"]
+[ext_resource type="Texture2D" uid="uid://dymwm2i1aeap1" path="res://Scenes/Entities/Player/Knight/Attack/attack0.png" id="2_t3wdu"]
+[ext_resource type="Texture2D" uid="uid://d01e51ca2wuk8" path="res://Scenes/Entities/Player/Knight/Jump/jump2.png" id="3_brmwk"]
+[ext_resource type="Texture2D" uid="uid://62w6mw3yjh2a" path="res://Scenes/Entities/Player/Knight/Run/run1.png" id="3_ng0t0"]
+[ext_resource type="Texture2D" uid="uid://byfne5fe4caq3" path="res://Scenes/Entities/Player/Knight/Attack/attack1.png" id="3_uklo1"]
+[ext_resource type="Texture2D" uid="uid://da8ov1xwstlag" path="res://Scenes/Entities/Player/Knight/Run/run2.png" id="4_k3c4s"]
+[ext_resource type="Texture2D" uid="uid://clqnn8bhffkmx" path="res://Scenes/Entities/Player/Knight/Attack/attack2.png" id="4_qyvdj"]
+[ext_resource type="Texture2D" uid="uid://taoun81f8agm" path="res://Scenes/Entities/Player/Knight/Jump/jump3.png" id="4_utq8v"]
+[ext_resource type="Texture2D" uid="uid://cl6nmdntm7qet" path="res://Scenes/Entities/Player/Knight/Attack/attack4.png" id="5_chnfs"]
+[ext_resource type="Texture2D" uid="uid://dx05gj8jxyj57" path="res://Scenes/Entities/Player/Knight/Run/run3.png" id="5_j2l77"]
+[ext_resource type="Texture2D" uid="uid://omn5abnp1m4u" path="res://Scenes/Entities/Player/Knight/Jump/jump4.png" id="5_q7p07"]
+[ext_resource type="Texture2D" uid="uid://conngpn5juqbt" path="res://Scenes/Entities/Player/Knight/Death/death1.png" id="6_feair"]
+[ext_resource type="Texture2D" uid="uid://erd0dwrtsqiy" path="res://Scenes/Entities/Player/Knight/Run/run4.png" id="6_oijef"]
+[ext_resource type="Texture2D" uid="uid://ccggocpf41682" path="res://Scenes/Entities/Player/Knight/Jump/jump5.png" id="6_qr2sg"]
+[ext_resource type="Texture2D" uid="uid://dsihn4v7xq1s3" path="res://Scenes/Entities/Player/Knight/Jump/jump6.png" id="7_n63r7"]
+[ext_resource type="Texture2D" uid="uid://bmblw4geomll4" path="res://Scenes/Entities/Player/Knight/Run/run5.png" id="7_tfv4t"]
+[ext_resource type="Texture2D" uid="uid://dhrgin2tv32ci" path="res://Scenes/Entities/Player/Knight/Death/death2.png" id="7_yaunk"]
+[ext_resource type="Texture2D" uid="uid://i8n46bc0vn3u" path="res://Scenes/Entities/Player/Knight/Jump/jump7.png" id="8_0hnno"]
+[ext_resource type="Texture2D" uid="uid://4h5k4t4tpbqk" path="res://Scenes/Entities/Player/Knight/Death/death3.png" id="8_f2k4c"]
+[ext_resource type="Texture2D" uid="uid://cgkphl20twgvb" path="res://Scenes/Entities/Player/Knight/Run/run6.png" id="8_uwf1u"]
+[ext_resource type="Texture2D" uid="uid://nj8geo04xj4l" path="res://Scenes/Entities/Player/Knight/Death/death4.png" id="9_l2iel"]
+[ext_resource type="Texture2D" uid="uid://croqqsiw2lb6s" path="res://Scenes/Entities/Player/Knight/Run/run7.png" id="9_yxiwt"]
+[ext_resource type="Texture2D" uid="uid://c11xceetrpw0c" path="res://Scenes/Entities/Player/Knight/Death/death5.png" id="10_q6yxn"]
+[ext_resource type="Texture2D" uid="uid://btef1wt2skpv5" path="res://Scenes/Entities/Player/Knight/Run/run8.png" id="10_qjl13"]
+[ext_resource type="Texture2D" uid="uid://bec6h2ex7q1sr" path="res://Scenes/Entities/Player/Knight/Death/death6.png" id="11_lauit"]
+[ext_resource type="Texture2D" uid="uid://cqau00xvawgbt" path="res://Scenes/Entities/Player/Knight/Death/death7.png" id="12_63s43"]
+[ext_resource type="Texture2D" uid="uid://dij2pdra1r2ir" path="res://Scenes/Entities/Player/Knight/Death/death8.png" id="13_x2ud6"]
+[ext_resource type="Texture2D" uid="uid://8w7nweudbjk5" path="res://Scenes/Entities/Player/Knight/Death/death9.png" id="14_86t3l"]
+[ext_resource type="Texture2D" uid="uid://cx1n376gf28oh" path="res://Scenes/Entities/Player/Knight/Death/death10.png" id="15_67d5p"]
+[ext_resource type="Texture2D" uid="uid://ct341gr2cn0ux" path="res://Scenes/Entities/Player/Knight/Hurt/hurt1.png" id="16_6v1wo"]
+[ext_resource type="Texture2D" uid="uid://cxt8onpadl7st" path="res://Scenes/Entities/Player/Knight/Hurt/hurt2.png" id="17_ovgyy"]
+[ext_resource type="Texture2D" uid="uid://dhnya8y837vhs" path="res://Scenes/Entities/Player/Knight/Hurt/hurt3.png" id="18_c5c0v"]
+[ext_resource type="Texture2D" uid="uid://dkm7tw4qpelnv" path="res://Scenes/Entities/Player/Knight/Hurt/hurt4.png" id="19_uc27s"]
+[ext_resource type="Texture2D" uid="uid://yqvdhvatg2v6" path="res://Scenes/Entities/Player/Knight/Idle/idle1.png" id="20_6ycpu"]
+[ext_resource type="Texture2D" uid="uid://c6f08n8jx3x57" path="res://Scenes/Entities/Player/Knight/Idle/idle2.png" id="21_cpuui"]
+[ext_resource type="Texture2D" uid="uid://dibcxyo1fq70o" path="res://Scenes/Entities/Player/Knight/Idle/idle3.png" id="22_cck3u"]
+[ext_resource type="Texture2D" uid="uid://baskqom5275kn" path="res://Scenes/Entities/Player/Knight/Idle/idle4.png" id="23_47lap"]
+[ext_resource type="Texture2D" uid="uid://dv0mmvob13sji" path="res://Scenes/Entities/Player/Knight/Idle/idle5.png" id="24_24mnr"]
+[ext_resource type="Texture2D" uid="uid://b75o16v3xvrkc" path="res://Scenes/Entities/Player/Knight/Idle/idle6.png" id="25_lcopx"]
+[ext_resource type="Texture2D" uid="uid://cpnuri54syo3u" path="res://Scenes/Entities/Player/Knight/Idle/idle7.png" id="26_gduks"]
+[ext_resource type="Texture2D" uid="uid://cad750l7l4sqe" path="res://Scenes/Entities/Player/Knight/Idle/idle8.png" id="27_1sy5l"]
+[ext_resource type="Texture2D" uid="uid://5lgcs0uoxb6v" path="res://Scenes/Entities/Player/Knight/Idle/idle9.png" id="28_lh3ki"]
+[ext_resource type="Texture2D" uid="uid://gam3u3ocvqdm" path="res://Scenes/Entities/Player/Knight/Idle/idle10.png" id="29_21ecs"]
+[ext_resource type="Texture2D" uid="uid://vmbwnobp2k3r" path="res://Scenes/Entities/Player/Knight/Idle/idle11.png" id="30_rhy4l"]
+[ext_resource type="Texture2D" uid="uid://xawhkjaeiqaq" path="res://Scenes/Entities/Player/Knight/Idle/idle12.png" id="31_pm8pr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6oqp"]
-size = Vector2(85, 81)
+size = Vector2(114, 133)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4upot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t3wdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uklo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qyvdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_chnfs")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_feair")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yaunk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f2k4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_l2iel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q6yxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lauit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_63s43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_x2ud6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_86t3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_67d5p")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_6v1wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ovgyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_c5c0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uc27s")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_6ycpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cpuui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_cck3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_47lap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_24mnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_lcopx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_gduks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1sy5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_lh3ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_21ecs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_rhy4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_pm8pr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kmkju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_brmwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_utq8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q7p07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qr2sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n63r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0hnno")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ng0t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k3c4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j2l77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oijef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tfv4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uwf1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yxiwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qjl13")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_pqfn2"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [&"run", &"run"]
+}
+
+[sub_resource type="Animation" id="Animation_5pvlr"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [&"jump", &"jump"]
+}
+
+[sub_resource type="Animation" id="Animation_w8s6y"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"idle", &"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 11]
+}
+
+[sub_resource type="Animation" id="Animation_27w4l"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_60cgt"]
+resource_name = "hurt"
+
+[sub_resource type="Animation" id="Animation_o5p5t"]
+resource_name = "death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_33urk"]
+_data = {
+"attack": SubResource("Animation_27w4l"),
+"death": SubResource("Animation_o5p5t"),
+"hurt": SubResource("Animation_60cgt"),
+"idle": SubResource("Animation_w8s6y"),
+"jump": SubResource("Animation_5pvlr"),
+"run": SubResource("Animation_pqfn2")
+}
 
 [node name="Player" type="Node2D"]
 
@@ -17,10 +329,19 @@ position = Vector2(-2, -178)
 scale = Vector2(100, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-21.5, -22.5)
+position = Vector2(2, -20.5)
 shape = SubResource("RectangleShape2D_n6oqp")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-20.5, -22.5)
-scale = Vector2(0.679688, 0.648438)
-texture = ExtResource("2_qukv1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+unique_name_in_owner = true
+position = Vector2(44, -69)
+scale = Vector2(2.46484, 2.53516)
+sprite_frames = SubResource("SpriteFrames_4upot")
+animation = &"run"
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+callback_mode_method = 1
+libraries = {
+"": SubResource("AnimationLibrary_33urk")
+}
