@@ -40,7 +40,16 @@ func _physics_process(delta):
 				if $AnimationPlayer.current_animation != "idle":
 					$AnimationPlayer.play("idle")
 					
-	#if direction < 0:
-		#if
+	if direction < 0:
+		var current_scale = %AnimatedSprite2D.get_scale()
+		if current_scale.x > 0:
+			%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
+			%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
+	else:
+		var current_scale = %AnimatedSprite2D.get_scale()
+		if current_scale.x < 0:
+			%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
+			%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
+			
 					
 	move_and_slide()

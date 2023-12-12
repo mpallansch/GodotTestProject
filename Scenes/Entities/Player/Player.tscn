@@ -48,7 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://xawhkjaeiqaq" path="res://Scenes/Entities/Player/Knight/Idle/idle12.png" id="31_pm8pr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6oqp"]
-size = Vector2(114, 133)
+size = Vector2(108, 133)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4upot"]
 animations = [{
@@ -218,33 +218,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_pqfn2"]
-resource_name = "run"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [&"run", &"run"]
-}
-
 [sub_resource type="Animation" id="Animation_5pvlr"]
 resource_name = "jump"
 tracks/0/type = "value"
@@ -308,6 +281,33 @@ resource_name = "hurt"
 [sub_resource type="Animation" id="Animation_o5p5t"]
 resource_name = "death"
 
+[sub_resource type="Animation" id="Animation_pqfn2"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [&"run", &"run"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_33urk"]
 _data = {
 "attack": SubResource("Animation_27w4l"),
@@ -329,16 +329,15 @@ position = Vector2(-2, -178)
 scale = Vector2(100, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(2, -20.5)
+position = Vector2(-1, 10)
 shape = SubResource("RectangleShape2D_n6oqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
-position = Vector2(44, -69)
-scale = Vector2(2.46484, 2.53516)
+position = Vector2(56, -40)
+scale = Vector2(2.465, 2.535)
 sprite_frames = SubResource("SpriteFrames_4upot")
 animation = &"run"
-frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 callback_mode_method = 1
