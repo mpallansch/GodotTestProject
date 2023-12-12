@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const NAME = "Player"
 const JUMP_VELOCITY = -1600.0
+
+signal apply_damage(damage)
 
 @onready var animated_sprite = %AnimatedSprite2D
 
@@ -9,19 +10,14 @@ const JUMP_VELOCITY = -1600.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 3
 
 func _ready():
+	apply_damage.connect(on_damage)
 	$AnimationPlayer.play("idle")
 	pass # Replace with function body.
 	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		$AnimationPlayer.play("jump")
-		velocity.y = JUMP_VELOCITY
-			
+		velocity.y += gravity * delta	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -31,13 +27,18 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, PlayerVariables.current_speed)
 		
-	if !Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$AnimationPlayer.play("jump")
+		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_just_pressed("attack"):
+		$AnimationPlayer.play("attack")
+	else:
 		if is_on_floor():
 			if direction != 0:
-				if $AnimationPlayer.current_animation != "run":
+				if !$AnimationPlayer.current_animation || $AnimationPlayer.current_animation == "idle":
 					$AnimationPlayer.play("run")
 			else:
-				if $AnimationPlayer.current_animation != "idle":
+				if !$AnimationPlayer.current_animation || $AnimationPlayer.current_animation == "run":
 					$AnimationPlayer.play("idle")
 					
 	if direction < 0:
@@ -45,7 +46,7 @@ func _physics_process(delta):
 		if current_scale.x > 0:
 			%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
 			%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
-	else:
+	elif direction > 0:
 		var current_scale = %AnimatedSprite2D.get_scale()
 		if current_scale.x < 0:
 			%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
@@ -53,3 +54,7 @@ func _physics_process(delta):
 			
 					
 	move_and_slide()
+	
+func on_damage(damage):
+	PlayerVariables.increase_health(-1 * damage)
+	$AnimationPlayer.play("hurt")
