@@ -20,4 +20,20 @@ texture = ExtResource("1_5eljk")
 position = Vector2(82.5, 74.5)
 shape = SubResource("RectangleShape2D_t57ea")
 
+[node name="HealthBarContainer" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -15.0
+offset_top = -35.0
+offset_right = 185.0
+offset_bottom = -15.0
+color = Color(0, 1, 0, 1)
+
+[node name="HealthBar" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -15.0
+offset_top = -35.0
+offset_right = 85.0
+offset_bottom = -15.0
+color = Color(1, 0, 0, 1)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
