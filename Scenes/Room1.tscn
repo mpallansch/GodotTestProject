@@ -106,6 +106,6 @@ shape = SubResource("RectangleShape2D_nvfan")
 position = Vector2(22, 517)
 
 [node name="Enemy" parent="." instance=ExtResource("4_6slop")]
-position = Vector2(879, 414)
+position = Vector2(898, 451)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]

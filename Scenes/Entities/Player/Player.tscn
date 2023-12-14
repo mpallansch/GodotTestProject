@@ -453,9 +453,10 @@ shape = SubResource("RectangleShape2D_n6oqp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
 position = Vector2(56, -40)
-scale = Vector2(2.465, 2.535)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_4upot")
 animation = &"attack"
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 callback_mode_method = 1
@@ -469,7 +470,8 @@ unique_name_in_owner = true
 script = ExtResource("47_540ce")
 
 [node name="SwordCollider" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-position = Vector2(45, -45)
+position = Vector2(125, 56)
+rotation = -1.22173
 shape = SubResource("RectangleShape2D_px3ru")
 
 [connection signal="area_shape_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_shape_entered"]
