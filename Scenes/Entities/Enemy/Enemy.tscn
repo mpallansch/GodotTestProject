@@ -409,7 +409,7 @@ _data = {
 "run": SubResource("Animation_7c0in")
 }
 
-[node name="Enemy" type="Node2D"]
+[node name="MageEnemy" type="Node2D"]
 script = ExtResource("1_gdmsy")
 
 [node name="Area2D" type="Area2D" parent="."]

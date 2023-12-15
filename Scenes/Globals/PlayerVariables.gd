@@ -40,6 +40,7 @@ var upgrades = [{
 var health = 0;
 var experience = 0;
 var current_speed = default_speed
+var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -119,5 +120,11 @@ func apply_upgrades():
 	for upgrade in upgrades:
 		if upgrade["purchased"] && upgrade["name"] == "Increase Speed":
 			current_speed = default_speed * 2
+			
+func store_player_referece(player_ref):
+	player = player_ref
+	
+func get_player():
+	return player
 
 

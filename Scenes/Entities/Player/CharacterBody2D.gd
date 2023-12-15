@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 3
 func _ready():
 	apply_damage.connect(on_damage)
 	play_animation("idle")
+	PlayerVariables.store_player_referece(self)
 	pass # Replace with function body.
 	
 func _physics_process(delta):

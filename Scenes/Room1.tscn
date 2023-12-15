@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_7dddf"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_5i753"]
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_khi2g"]
-[ext_resource type="PackedScene" uid="uid://dw2jwgahww5k4" path="res://Scenes/Entities/Enemy/Enemy.tscn" id="4_6slop"]
+[ext_resource type="PackedScene" uid="uid://0vjm83ykh116" path="res://Scenes/Entities/Enemy/MageEnemy.tscn" id="4_xbkqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -105,7 +105,7 @@ shape = SubResource("RectangleShape2D_nvfan")
 [node name="Player" parent="." instance=ExtResource("3_khi2g")]
 position = Vector2(22, 517)
 
-[node name="Enemy" parent="." instance=ExtResource("4_6slop")]
-position = Vector2(898, 451)
+[node name="MageEnemy" parent="." instance=ExtResource("4_xbkqk")]
+position = Vector2(895, 437)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]

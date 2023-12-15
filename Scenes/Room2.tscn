@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6hqehojqd88"]
+[gd_scene load_steps=6 format=3 uid="uid://6hqehojqd88"]
 
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_tl8sk"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_plxbl"]
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_mjxos"]
+[ext_resource type="PackedScene" uid="uid://dh0so5chbirco" path="res://Scenes/Entities/Enemy/MeleeEnemy.tscn" id="4_k7no0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -103,5 +104,8 @@ shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Player" parent="." instance=ExtResource("3_mjxos")]
 position = Vector2(15, 532)
+
+[node name="MageEnemy" parent="." instance=ExtResource("4_k7no0")]
+position = Vector2(896, 454)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
