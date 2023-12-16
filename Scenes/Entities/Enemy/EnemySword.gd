@@ -13,7 +13,6 @@ func _process(delta):
 	
 
 func on_attack_start():
-	print("here3")
 	disable = false
 	
 func on_attack_end():

@@ -1,5 +1,7 @@
 extends Node2D
 
+const hidden_scenes = ["MainMenu", "SettingsMenu", "LoadMenu"]
+
 @onready var menu_container = %MarginContainer
 
 # Called when the node enters the scene tree for the first time.
@@ -10,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") && !(get_tree().current_scene.name in hidden_scenes):
 		get_tree().paused = !get_tree().paused
 		if get_tree().paused:
 			menu_container.show()

@@ -37,24 +37,20 @@ var upgrades = [{
 	"purchased": false
 }]
 
-var health = 0;
-var experience = 0;
+var health = 0
+var experience = 0
 var current_speed = default_speed
 var player
+var current_save = "Default"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_data()
 	health = default_health
 	GUI.update_health_label()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-func global_print(message):
-	print(message)
 	pass
 
 func increase_experience(points):
@@ -84,18 +80,19 @@ func purchase_upgrade(upgrade_name):
 	pass
 	
 func save_data():
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.WRITE)
 
 	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades})
 
 	save_game.store_line(json_string)
 	pass
 	
-func load_data():
-	if not FileAccess.file_exists("user://savegame.save"):
+func load_data(save):
+	current_save = save
+	if not FileAccess.file_exists("user://" + current_save + ".save"):
 		return
 
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.READ)
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
 

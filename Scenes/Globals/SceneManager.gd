@@ -1,5 +1,7 @@
 extends Node
 
+signal on_scene_change(scene_name)
+
 var current_scene = null
 var rng = RandomNumberGenerator.new()
 
@@ -44,3 +46,5 @@ func _deferred_goto_scene(path):
 
 	# Optional, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+	
+	on_scene_change.emit(current_scene.name)
