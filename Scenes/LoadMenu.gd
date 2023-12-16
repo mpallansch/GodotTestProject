@@ -22,13 +22,14 @@ func update_save_label(save, is_empty, upgrades, experience):
 	if !(save in save_buttons_map):
 		save_buttons_map[save] = Button.new()
 		slots_list.add_child(save_buttons_map[save])
+		save_buttons_map[save].add_theme_font_size_override("font_size", 45)
 		save_buttons_map[save].connect("pressed", get_on_load_selected(save))
 	
-	var label_text = save + ": "
+	var label_text = save + "\n   "
 	if is_empty:
-		label_text += "Emtpy"
+		label_text += "Emtpy   "
 	else:
-		label_text += upgrades + " upgrades | " + experience + "xp"
+		label_text += upgrades + " upgrades | " + experience + "xp   "
 	save_buttons_map[save].text = label_text
 
 

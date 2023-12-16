@@ -24,23 +24,31 @@ offset_right = 35.0
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "This Is Where a Title Would Go"
+theme_override_font_sizes/font_size = 65
+text = "This Is Where a Title Would Go... IF WE HAD ONE"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Start"
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "   Start   "
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Settings"
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "   Settings   "
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "   Quit   "
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
