@@ -59,10 +59,9 @@ func load_save_info(save):
 
 
 func _on_button_pressed():
-	SceneManager.goto_scene("res://Scenes/MainMenu.tscn")
+	SceneManager.goto_scene("MainMenu")
 
 func get_on_load_selected(save):
 	var save_name = save
 	return func on_load_selected():
 		PlayerVariables.load_data(save_name)
-		SceneManager.goto_scene("res://Scenes/StartingRoom.tscn")

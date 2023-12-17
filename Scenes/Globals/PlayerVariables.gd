@@ -68,7 +68,7 @@ func increase_health(points):
 	health += points
 	if health <= 0:
 		health = default_health
-		SceneManager.goto_scene("res://Scenes/StartingRoom.tscn")
+		SceneManager.goto_scene("StartingRoom")
 	GUI.update_health_label()
 
 func purchase_upgrade(upgrade_name):
@@ -85,7 +85,7 @@ func purchase_upgrade(upgrade_name):
 func save_data():
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.WRITE)
 
-	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades})
+	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades, "layout": SceneManager.current_layout, "layout_index": SceneManager.current_layout_index})
 
 	save_game.store_line(json_string)
 	
@@ -93,6 +93,7 @@ func load_data(save):
 	current_save = save
 	if not FileAccess.file_exists("user://" + current_save + ".save"):
 		enforce_defaults()
+		SceneManager.generate_floor_layout()
 		return
 
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.READ)
@@ -113,6 +114,11 @@ func load_data(save):
 		
 		upgrades = loaded_data["upgrades"]
 		apply_upgrades()
+		
+		if "layout" in loaded_data && "layout_index" in loaded_data:
+			SceneManager.set_layout(loaded_data["layout"], loaded_data["layout_index"])
+		else:
+			SceneManager.generate_floor_layout()
 		
 	pass
 	

@@ -25,7 +25,6 @@ func update_experience_label():
 	pass
 	
 func hide_if_not_playing(scene_name):
-	print(scene_name)
 	if scene_name in hidden_scenes:
 		self.get_node("CanvasLayer").hide()
 	else:

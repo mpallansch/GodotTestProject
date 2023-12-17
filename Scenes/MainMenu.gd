@@ -13,11 +13,11 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
-	SceneManager.goto_scene("res://Scenes/LoadMenu.tscn")
+	SceneManager.goto_scene("LoadMenu")
 
 
 func _on_settings_button_pressed():
-	SceneManager.goto_scene("res://Scenes/SettingsMenu.tscn")
+	SceneManager.goto_scene("SettingsMenu")
 
 
 func _on_quit_button_pressed():

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm7p06sy37eau"]
+[gd_scene load_steps=7 format=3 uid="uid://dm7p06sy37eau"]
 
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_4nabi"]
+[ext_resource type="Script" path="res://Scenes/Room.gd" id="1_i4l5n"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_p1xev"]
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_d6puq"]
 [ext_resource type="PackedScene" uid="uid://brkw28ciokfdn" path="res://Scenes/Entities/UpgradeChest/UpgradeChest.tscn" id="4_leoau"]
@@ -9,6 +10,7 @@
 size = Vector2(26, 311)
 
 [node name="StartingRoom" type="Node2D"]
+script = ExtResource("1_i4l5n")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -100,6 +102,7 @@ position = Vector2(1168, 470)
 shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Player" parent="." instance=ExtResource("3_d6puq")]
+unique_name_in_owner = true
 position = Vector2(1, 524)
 
 [node name="UpgradeChest" parent="." instance=ExtResource("4_leoau")]

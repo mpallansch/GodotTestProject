@@ -28,5 +28,5 @@ func _on_continue_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().paused = !get_tree().paused
 	menu_container.hide()
-	SceneManager.goto_scene("res://Scenes/MainMenu.tscn")
+	SceneManager.goto_scene("MainMenu")
 

@@ -1,12 +1,17 @@
-extends Area2D
+extends Node2D
+
+signal initialize(from_exit, seed)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	connect("initialize", on_initialize)
 	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func _on_body_entered(body):
-	SceneManager.room_left_exit()
+	
+func on_initialize(from_exit, seed):
+	if !from_exit:
+		%Player.position.x = 1000
