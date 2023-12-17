@@ -39,25 +39,30 @@ var upgrades = [{
 
 var health = 0
 var experience = 0
-var current_speed = default_speed
+var current_speed = 0
 var player
 var current_save = "Default"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = default_health
-	GUI.update_health_label()
-	pass # Replace with function body.
+	enforce_defaults()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func enforce_defaults():
+	health = default_health
+	current_speed = default_speed
+	experience = 0
+	GUI.update_health_label()
+	GUI.update_experience_label()
+	
 
 func increase_experience(points):
 	experience += points
 	GUI.update_experience_label()
 	save_data()
-	pass
 
 func increase_health(points):
 	health += points
@@ -65,7 +70,6 @@ func increase_health(points):
 		health = default_health
 		SceneManager.goto_scene("res://Scenes/StartingRoom.tscn")
 	GUI.update_health_label()
-	pass
 
 func purchase_upgrade(upgrade_name):
 	for upgrade in upgrades:
@@ -77,7 +81,6 @@ func purchase_upgrade(upgrade_name):
 	apply_upgrades()
 	
 	save_data()
-	pass
 	
 func save_data():
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.WRITE)
@@ -85,11 +88,11 @@ func save_data():
 	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades})
 
 	save_game.store_line(json_string)
-	pass
 	
 func load_data(save):
 	current_save = save
 	if not FileAccess.file_exists("user://" + current_save + ".save"):
+		enforce_defaults()
 		return
 
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.READ)
