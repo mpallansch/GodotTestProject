@@ -14,4 +14,8 @@ func _process(delta):
 	
 func on_initialize(from_exit, seed):
 	if !from_exit:
-		%Player.position.x = 1000
+		%Player.position.x = %Exit.position.x
+		%Player.position.y = %Exit.position.y
+	else:
+		%Player.position.x = %Enter.position.x
+		%Player.position.y = %Enter.position.y

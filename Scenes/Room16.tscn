@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b58otgc5sbmnh"]
+[gd_scene load_steps=9 format=3 uid="uid://daqd5rfqd6xd8"]
 
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_7dddf"]
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_nc6lr"]
@@ -42,6 +42,10 @@ rotation = 1.5708
 
 [node name="Platform1" parent="Platforms/WallRight" instance=ExtResource("1_7dddf")]
 position = Vector2(1089, 82)
+rotation = -1.5708
+
+[node name="Platform2" parent="Platforms/WallRight" instance=ExtResource("1_7dddf")]
+position = Vector2(1089, 404)
 rotation = -1.5708
 
 [node name="Cieling" type="Node" parent="Platforms"]

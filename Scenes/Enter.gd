@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	SceneManager.room_left_enter()
+	if body.owner.name == "Player":
+		SceneManager.room_left_enter()

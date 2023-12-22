@@ -19,6 +19,6 @@ func on_attack_end():
 	disable = true
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	if !disable:
+	if !disable && area.owner.get_node("CharacterBody2D"):
 		area.owner.get_node("CharacterBody2D").emit_signal("apply_damage", damage)
 		disable = true

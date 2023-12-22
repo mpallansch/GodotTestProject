@@ -1,7 +1,92 @@
 extends Node
 
+const seed_max = 10000
+
 const layout_length_min = 8
 const layout_length_max = 12
+
+const room_exits = {
+	"StartingRoom": {
+		"enter": "",
+		"exit": "right"
+	},
+	"Room1": {
+		"enter": "left",
+		"exit": "right"
+	},
+	"Room2": {
+		"enter": "left",
+		"exit": "right"
+	},
+	"Room3": {
+		"enter": "left",
+		"exit": "up"
+	},
+	"Room4": {
+		"enter": "left",
+		"exit": "down"
+	},
+	"Room5": {
+		"enter": "up",
+		"exit": "left"
+	},
+	"Room6": {
+		"enter": "down",
+		"exit": "left"
+	},
+	"Room7": {
+		"enter": "down",
+		"exit": "up"
+	},
+	"Room8": {
+		"enter": "up",
+		"exit": "down"
+	},
+	"Room9": {
+		"enter": "right",
+		"exit": "left"
+	},
+	"Room10": {
+		"enter": "right",
+		"exit": "down"
+	},
+	"Room11": {
+		"enter": "down",
+		"exit": "right"
+	},
+	"Room12": {
+		"enter": "up",
+		"exit": "right"
+	},
+	"Room13": {
+		"enter": "right",
+		"exit": "up"
+	},
+	"Room14": {
+		"enter": "up",
+		"exit": ""
+	},
+	"Room15": {
+		"enter": "right",
+		"exit": ""
+	},
+	"Room16": {
+		"enter": "left",
+		"exit": ""
+	},
+	"Room17": {
+		"enter": "down",
+		"exit": ""
+	}
+}
+
+const enter_exit_mapping = {
+	"":"",
+	"left": "right",
+	"right": "left",
+	"up": "down",
+	"down": "up"
+}
 
 signal on_scene_change(scene_name)
 
@@ -25,6 +110,9 @@ func random_scene():
 
 
 func goto_scene(path):
+	print(current_layout)
+	print(current_layout_index)
+	print(path)
 	# This function will usually be called from a signal callback,
 	# or some other function from the running scene.
 	# Deleting the current scene at this point might be
@@ -54,7 +142,6 @@ func _deferred_goto_scene(path):
 	get_tree().set_current_scene(current_scene)
 	
 	if current_layout:
-		print(current_layout_index)
 		var seed
 		if "seed" in current_layout[current_layout_index]:
 			seed = current_layout[current_layout_index]["seed"]
@@ -70,17 +157,42 @@ func generate_floor_layout():
 			"scene": "StartingRoom"
 		}
 	]
-	for i in range(rng.randi_range(layout_length_min, layout_length_max)):
-		current_layout .push_back({
-			"scene": "Room1" if rng.randi_range(0,1) > 0 else "Room2",
-			"seed": rng.randi_range(0, 10000)
+	for i in range(rng.randi_range(layout_length_min - 2, layout_length_max - 2)):
+		var possible_next_rooms = get_possible_next_rooms(room_exits[current_layout[i]["scene"]])
+		current_layout.push_back({
+			"scene": possible_next_rooms[rng.randi_range(0, possible_next_rooms.size() - 1)],
+			"seed": rng.randi_range(0, seed_max)
 		})
+	var possible_end_rooms = get_possible_end_rooms(room_exits[current_layout[current_layout.size() - 1]["scene"]])
+	current_layout.push_back({
+		"scene": possible_end_rooms[rng.randi_range(0, possible_end_rooms.size() - 1)],
+		"seed": rng.randi_range(0, seed_max)
+	})
 	PlayerVariables.save_data()
+	goto_scene(current_layout[current_layout_index].scene)
+	
+func get_possible_next_rooms(current_room):
+	var possible_next_rooms = []
+	
+	for room_name in room_exits:
+		if enter_exit_mapping[room_exits[room_name]["enter"]] == current_room["exit"]:
+			possible_next_rooms.push_back(room_name)
+	
+	return possible_next_rooms
+	
+	
+func get_possible_end_rooms(current_room):
+	var possible_end_rooms = []
+	
+	for room_name in room_exits:
+		if enter_exit_mapping[room_exits[room_name]["enter"]] == current_room["exit"] && room_exits[room_name]["exit"] == "":
+			possible_end_rooms.push_back(room_name)
+	
+	return possible_end_rooms
 	
 func set_layout(layout, layout_index):
 	current_layout = layout
 	current_layout_index = layout_index
-	print(layout, layout_index, layout[layout_index].scene)
 	goto_scene(layout[layout_index].scene)
 	
 func room_left_exit():

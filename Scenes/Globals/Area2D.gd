@@ -9,4 +9,5 @@ func _process(delta):
 	pass
 
 func _on_body_entered(body):
-	SceneManager.room_left_exit()
+	if body.owner.name == "Player":
+		SceneManager.room_left_exit()

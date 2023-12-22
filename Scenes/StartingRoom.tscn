@@ -95,10 +95,12 @@ rotation = 1.5708
 color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Exit" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(978, 436)
 script = ExtResource("2_p1xev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(1168, 470)
+position = Vector2(165, -46)
 shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Player" parent="." instance=ExtResource("3_d6puq")]
@@ -107,5 +109,9 @@ position = Vector2(1, 524)
 
 [node name="UpgradeChest" parent="." instance=ExtResource("4_leoau")]
 position = Vector2(434, 471)
+
+[node name="Enter" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 453)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
