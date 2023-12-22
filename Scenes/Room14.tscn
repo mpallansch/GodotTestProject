@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://0vjm83ykh116" path="res://Scenes/Entities/Enemy/MageEnemy.tscn" id="4_xbkqk"]
 [ext_resource type="Script" path="res://Scenes/Enter.gd" id="5_4hq5j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h1kt"]
-size = Vector2(26, 397)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h1kt"]
+size = Vector2(26, 397)
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource("1_nc6lr")
@@ -112,18 +112,18 @@ position = Vector2(481, 438)
 unique_name_in_owner = true
 script = ExtResource("2_5i753")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(301, -166)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_6h1kt")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Exit"]
+position = Vector2(1168, 470)
+shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Enter" type="Area2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_4hq5j")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enter"]
-position = Vector2(1168, 470)
-shape = SubResource("RectangleShape2D_nvfan")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
+position = Vector2(301, -166)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_6h1kt")
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]

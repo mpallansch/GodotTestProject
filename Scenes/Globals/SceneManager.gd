@@ -94,7 +94,7 @@ var current_scene = null
 var rng = RandomNumberGenerator.new()
 var current_layout
 var current_layout_index
-var from_exit = false
+var from_exit = true
 
 func _ready():
 	var root = get_tree().get_root()
@@ -110,9 +110,6 @@ func random_scene():
 
 
 func goto_scene(path):
-	print(current_layout)
-	print(current_layout_index)
-	print(path)
 	# This function will usually be called from a signal callback,
 	# or some other function from the running scene.
 	# Deleting the current scene at this point might be
@@ -175,7 +172,7 @@ func get_possible_next_rooms(current_room):
 	var possible_next_rooms = []
 	
 	for room_name in room_exits:
-		if enter_exit_mapping[room_exits[room_name]["enter"]] == current_room["exit"]:
+		if enter_exit_mapping[room_exits[room_name]["enter"]] == current_room["exit"] && room_exits[room_name]["exit"] != "":
 			possible_next_rooms.push_back(room_name)
 	
 	return possible_next_rooms
@@ -208,3 +205,9 @@ func room_left_enter():
 		current_layout_index -= 1
 		goto_scene(current_layout[current_layout_index].scene)
 		PlayerVariables.save_data()
+		
+func on_death():
+	from_exit = true
+	current_layout_index = 0
+	goto_scene("StartingRoom")
+	PlayerVariables.save_data()

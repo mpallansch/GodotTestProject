@@ -439,24 +439,23 @@ size = Vector2(11.75, 88.5)
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(5, 1)
+position = Vector2(0, -4)
 script = ExtResource("1_41m2r")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-2, -178)
+position = Vector2(-2, -528)
 scale = Vector2(100, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, 10)
+position = Vector2(-1, -440)
 shape = SubResource("RectangleShape2D_n6oqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
-position = Vector2(56, -40)
+position = Vector2(56, -490)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_4upot")
 animation = &"attack"
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 callback_mode_method = 1
@@ -467,11 +466,11 @@ autoplay = "idle"
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
+position = Vector2(0, -450)
 script = ExtResource("47_540ce")
 
 [node name="SwordCollider" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-position = Vector2(125, 56)
-rotation = -1.22173
+position = Vector2(45, -45)
 shape = SubResource("RectangleShape2D_px3ru")
 
 [connection signal="area_shape_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_shape_entered"]

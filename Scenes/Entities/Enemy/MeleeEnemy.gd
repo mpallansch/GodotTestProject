@@ -35,6 +35,7 @@ func _process(delta):
 			PlayerVariables.increase_experience(experience)
 			queue_free()
 	else:
+		print(player.position.x, "    ", position.x)
 		if player.position.x < position.x - strike_distance:
 			if !$AnimationPlayer.current_animation || $AnimationPlayer.current_animation == "idle":
 				play_animation("run")

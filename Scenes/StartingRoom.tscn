@@ -112,6 +112,6 @@ position = Vector2(434, 471)
 
 [node name="Enter" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, 453)
+position = Vector2(-1, 453)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]

@@ -68,7 +68,7 @@ func increase_health(points):
 	health += points
 	if health <= 0:
 		health = default_health
-		SceneManager.goto_scene("StartingRoom")
+		SceneManager.on_death()
 	GUI.update_health_label()
 
 func purchase_upgrade(upgrade_name):
