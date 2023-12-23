@@ -115,11 +115,11 @@ shape = SubResource("RectangleShape2D_jevv3")
 
 [node name="Enter" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(473, 4)
+position = Vector2(442, 50)
 script = ExtResource("5_ki37y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Enter"]
-position = Vector2(-149, -169)
+position = Vector2(-113, -227)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_nvfan")
 

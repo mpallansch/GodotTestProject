@@ -100,18 +100,18 @@ color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_khi2g")]
 unique_name_in_owner = true
-position = Vector2(10, 310)
+position = Vector2(81, 587)
 
 [node name="MageEnemy" parent="." instance=ExtResource("4_xbkqk")]
 position = Vector2(481, 438)
 
 [node name="Exit" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(430, -3)
+position = Vector2(439, 64)
 script = ExtResource("2_5i753")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(-90, -169)
+position = Vector2(-105, -235)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6h1kt")
 

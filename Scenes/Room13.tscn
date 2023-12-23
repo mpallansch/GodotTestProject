@@ -109,7 +109,7 @@ unique_name_in_owner = true
 script = ExtResource("2_5i753")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(301, -166)
+position = Vector2(369, -165)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6h1kt")
 
