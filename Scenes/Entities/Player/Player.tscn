@@ -472,6 +472,7 @@ script = ExtResource("47_540ce")
 [node name="SwordCollider" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(45, -45)
 shape = SubResource("RectangleShape2D_px3ru")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [connection signal="area_shape_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_body_entered"]

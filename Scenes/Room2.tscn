@@ -103,6 +103,7 @@ position = Vector2(48, 363)
 
 [node name="MageEnemy" parent="." instance=ExtResource("4_k7no0")]
 position = Vector2(480, 462)
+metadata/spawn_chance = 0.5
 
 [node name="Exit" type="Area2D" parent="."]
 unique_name_in_owner = true

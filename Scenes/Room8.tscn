@@ -118,6 +118,7 @@ shape = SubResource("RectangleShape2D_nvfan")
 [node name="Enter" type="Area2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_4hq5j")
+metadata/spawn_chance = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
 position = Vector2(337, -164)

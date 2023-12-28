@@ -120,6 +120,7 @@ script = ExtResource("5_4hq5j")
 position = Vector2(310, 200)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_nvfan")
+metadata/spawn_chance = 0.5
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]

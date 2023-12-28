@@ -47,6 +47,7 @@ rotation = -1.5708
 [node name="Platform2" parent="Platforms/WallRight" instance=ExtResource("1_7dddf")]
 position = Vector2(1089, 404)
 rotation = -1.5708
+metadata/spawn_chance = 0.5
 
 [node name="Cieling" type="Node" parent="Platforms"]
 

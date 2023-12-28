@@ -101,6 +101,7 @@ color = Color(0.14902, 0.14902, 0.14902, 1)
 [node name="Player" parent="." instance=ExtResource("3_khi2g")]
 unique_name_in_owner = true
 position = Vector2(81, 587)
+metadata/spawn_chance = 0.5
 
 [node name="MageEnemy" parent="." instance=ExtResource("4_xbkqk")]
 position = Vector2(481, 438)
