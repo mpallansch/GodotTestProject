@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm7p06sy37eau"]
+[gd_scene load_steps=8 format=3 uid="uid://dm7p06sy37eau"]
 
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_4nabi"]
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_i4l5n"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_p1xev"]
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_d6puq"]
 [ext_resource type="PackedScene" uid="uid://brkw28ciokfdn" path="res://Scenes/Entities/UpgradeChest/UpgradeChest.tscn" id="4_leoau"]
+[ext_resource type="PackedScene" uid="uid://b4d7kw0y1m56q" path="res://Scenes/Entities/NPC/NPC.tscn" id="6_grg7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -113,5 +114,8 @@ position = Vector2(434, 471)
 [node name="Enter" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-1, 453)
+
+[node name="Npc" parent="." instance=ExtResource("6_grg7p")]
+position = Vector2(852, 569)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
