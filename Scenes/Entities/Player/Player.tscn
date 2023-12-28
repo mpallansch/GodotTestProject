@@ -219,6 +219,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px3ru"]
+size = Vector2(11.75, 88.5)
+
 [sub_resource type="Animation" id="Animation_27w4l"]
 resource_name = "attack"
 length = 0.5
@@ -249,7 +252,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/SwordCollider:position")
+tracks/2/path = NodePath("AnimatedSprite2D/Area2D/SwordCollider:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -261,7 +264,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Area2D/SwordCollider:rotation")
+tracks/3/path = NodePath("AnimatedSprite2D/Area2D/SwordCollider:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -273,7 +276,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Area2D")
+tracks/4/path = NodePath("AnimatedSprite2D/Area2D")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -433,9 +436,6 @@ _data = {
 "run": SubResource("Animation_pqfn2")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_px3ru"]
-size = Vector2(11.75, 88.5)
-
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -457,6 +457,17 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_4upot")
 animation = &"attack"
 
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(-22.4, 16)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("47_540ce")
+
+[node name="SwordCollider" type="CollisionShape2D" parent="CharacterBody2D/AnimatedSprite2D/Area2D"]
+position = Vector2(45, -45)
+shape = SubResource("RectangleShape2D_px3ru")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 callback_mode_method = 1
 libraries = {
@@ -464,15 +475,5 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
-unique_name_in_owner = true
-position = Vector2(0, -450)
-script = ExtResource("47_540ce")
-
-[node name="SwordCollider" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-position = Vector2(45, -45)
-shape = SubResource("RectangleShape2D_px3ru")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[connection signal="area_shape_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_area_shape_entered"]
-[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D/Area2D" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="CharacterBody2D/AnimatedSprite2D/Area2D" to="CharacterBody2D/AnimatedSprite2D/Area2D" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="CharacterBody2D/AnimatedSprite2D/Area2D" to="CharacterBody2D/AnimatedSprite2D/Area2D" method="_on_body_entered"]

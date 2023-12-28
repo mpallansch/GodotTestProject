@@ -110,7 +110,6 @@ func random_scene():
 
 
 func goto_scene(path):
-	print(path)
 	# This function will usually be called from a signal callback,
 	# or some other function from the running scene.
 	# Deleting the current scene at this point might be
@@ -144,7 +143,6 @@ func _deferred_goto_scene(path):
 		if "seed" in current_layout[current_layout_index]:
 			seed = current_layout[current_layout_index]["seed"]
 		
-		print(seed)
 		current_scene.emit_signal("initialize", from_exit, seed)
 
 	on_scene_change.emit(current_scene.name)
