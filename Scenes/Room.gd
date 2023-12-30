@@ -1,6 +1,6 @@
 extends Node2D
 
-signal initialize(from_exit, seed)
+signal initialize(from_exit, persistent_data, seed)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,12 +41,18 @@ func process_nodes(node, seed):
 		if child_node.get_child_count() > 0:
 			process_nodes(child_node, seed)
 	
-func on_initialize(from_exit, seed):
+func on_initialize(from_exit, persistent_state, seed):
 	if !from_exit:
 		%Player.get_node("CharacterBody2D").position.x = %Exit.position.x
 		%Player.get_node("CharacterBody2D").position.y = %Exit.position.y
 	else:
 		%Player.get_node("CharacterBody2D").position.x = %Enter.position.x
 		%Player.get_node("CharacterBody2D").position.y = %Enter.position.y
+		
+	if persistent_state:
+		for path in persistent_state:
+			var node_receiving_state = get_node(path)
+			if node_receiving_state:
+				node_receiving_state.emit_signal("apply_persistent_state", persistent_state[path])
 		
 	process_nodes(self, seed)

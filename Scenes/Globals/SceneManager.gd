@@ -142,8 +142,12 @@ func _deferred_goto_scene(path):
 		var seed
 		if "seed" in current_layout[current_layout_index]:
 			seed = current_layout[current_layout_index]["seed"]
+			
+		var persistent_state
+		if "persistent_state" in current_layout[current_layout_index]:
+			persistent_state = current_layout[current_layout_index]["persistent_state"]
 		
-		current_scene.emit_signal("initialize", from_exit, seed)
+		current_scene.emit_signal("initialize", from_exit, persistent_state, seed)
 
 	on_scene_change.emit(current_scene.name)
 	
@@ -210,4 +214,14 @@ func on_death():
 	from_exit = true
 	current_layout_index = 0
 	goto_scene("StartingRoom")
+	PlayerVariables.save_data()
+
+func set_persistent_state(path, prop_name, value):
+	if !("persistent_state" in current_layout[current_layout_index]):
+		current_layout[current_layout_index]["persistent_state"] = {}
+		
+	if !(path in current_layout[current_layout_index]["persistent_state"]):
+		current_layout[current_layout_index]["persistent_state"][path] = {}
+		
+	current_layout[current_layout_index]["persistent_state"][path][prop_name] = value
 	PlayerVariables.save_data()
