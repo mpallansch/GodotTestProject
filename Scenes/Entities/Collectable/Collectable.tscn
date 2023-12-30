@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bec6sjrt8ynm1"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Collectable/Collectable.gd" id="1_g6brh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hves"]
+size = Vector2(46.5, 44)
+
+[node name="Collectable" type="Node2D"]
+script = ExtResource("1_g6brh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_7hves")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Blue" type="ColorRect" parent="Sprites"]
+visible = false
+offset_left = -23.0
+offset_top = -46.0
+offset_right = 22.0
+offset_bottom = -4.0
+color = Color(0, 1, 1, 1)
+
+[node name="Red" type="ColorRect" parent="Sprites"]
+visible = false
+offset_left = -23.0
+offset_top = -47.0
+offset_right = 23.0
+offset_bottom = -4.0
+color = Color(0.698039, 0.211765, 0.243137, 1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
