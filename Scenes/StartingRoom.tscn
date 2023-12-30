@@ -118,4 +118,12 @@ position = Vector2(-1, 453)
 [node name="Npc" parent="." instance=ExtResource("6_grg7p")]
 position = Vector2(852, 569)
 
+[node name="Label" type="Label" parent="."]
+offset_left = 448.0
+offset_top = -55.0
+offset_right = 551.0
+offset_bottom = -24.0
+text = "Floor 2+"
+metadata/min_floor = 2
+
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]

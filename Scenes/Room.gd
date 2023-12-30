@@ -37,6 +37,10 @@ func process_nodes(node, seed):
 			if rng.randf_range(0, 1) > child_node.get_meta("spawn_chance"):
 				child_node.queue_free()
 				
+		if child_node.has_meta("min_floor"):
+			if PlayerVariables.floor < child_node.get_meta("min_floor"):
+				child_node.queue_free()
+				
 			
 		if child_node.get_child_count() > 0:
 			process_nodes(child_node, seed)

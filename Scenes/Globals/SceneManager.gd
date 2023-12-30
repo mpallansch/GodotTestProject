@@ -225,3 +225,9 @@ func set_persistent_state(path, prop_name, value):
 		
 	current_layout[current_layout_index]["persistent_state"][path][prop_name] = value
 	PlayerVariables.save_data()
+	
+func next_floor():
+	PlayerVariables.increment_floor()
+	
+	from_exit = true
+	generate_floor_layout()

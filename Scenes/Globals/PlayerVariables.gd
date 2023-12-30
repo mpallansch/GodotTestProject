@@ -40,6 +40,7 @@ var upgrades = [{
 var health = 0
 var experience = 0
 var current_speed = 0
+var floor = 1
 var player
 var current_save = "Default"
 
@@ -85,7 +86,7 @@ func purchase_upgrade(upgrade_name):
 func save_data():
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.WRITE)
 
-	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades, "layout": SceneManager.current_layout, "layout_index": SceneManager.current_layout_index})
+	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades, "floor": floor, "layout": SceneManager.current_layout, "layout_index": SceneManager.current_layout_index})
 
 	save_game.store_line(json_string)
 	
@@ -109,11 +110,16 @@ func load_data(save):
 
 		var loaded_data = json.get_data()
 		
-		experience = loaded_data["experience"]
-		GUI.update_experience_label()
+		if "experience" in loaded_data:
+			experience = loaded_data["experience"]
+			GUI.update_experience_label()
 		
-		upgrades = loaded_data["upgrades"]
-		apply_upgrades()
+		if "upgrades" in loaded_data:
+			upgrades = loaded_data["upgrades"]
+			apply_upgrades()
+		
+		if "floor" in loaded_data:
+			floor = loaded_data["floor"]
 		
 		if "layout" in loaded_data && "layout_index" in loaded_data:
 			SceneManager.set_layout(loaded_data["layout"], loaded_data["layout_index"])
@@ -132,5 +138,9 @@ func store_player_referece(player_ref):
 	
 func get_player():
 	return player
+	
+func increment_floor():
+	floor += 1
+	save_data()
 
 

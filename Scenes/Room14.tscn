@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://545neyaavpxr"]
+[gd_scene load_steps=10 format=3 uid="uid://545neyaavpxr"]
 
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_7dddf"]
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_nc6lr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_khi2g"]
 [ext_resource type="PackedScene" uid="uid://0vjm83ykh116" path="res://Scenes/Entities/Enemy/MageEnemy.tscn" id="4_xbkqk"]
 [ext_resource type="Script" path="res://Scenes/Enter.gd" id="5_4hq5j"]
+[ext_resource type="PackedScene" uid="uid://dq0n8ebfgnyrd" path="res://Scenes/Entities/Portal/Portal.tscn" id="7_vm6ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -125,6 +126,9 @@ script = ExtResource("5_4hq5j")
 position = Vector2(370, -181)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6h1kt")
+
+[node name="Portal" parent="." instance=ExtResource("7_vm6ef")]
+position = Vector2(912, 573)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
