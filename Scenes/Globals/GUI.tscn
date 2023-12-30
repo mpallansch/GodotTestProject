@@ -40,6 +40,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "HP: "
 
+[node name="SceneLabel" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 50
+text = "Test
+"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 

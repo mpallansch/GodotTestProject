@@ -1,5 +1,7 @@
 extends Node
 
+const debug = true
+
 const default_speed = 650.0
 const default_health = 10
 

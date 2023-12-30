@@ -110,6 +110,7 @@ func random_scene():
 
 
 func goto_scene(path):
+	GUI.scene_change(path)
 	# This function will usually be called from a signal callback,
 	# or some other function from the running scene.
 	# Deleting the current scene at this point might be
