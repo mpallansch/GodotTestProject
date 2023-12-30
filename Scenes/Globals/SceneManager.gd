@@ -213,9 +213,7 @@ func room_left_enter():
 		
 func on_death():
 	from_exit = true
-	current_layout_index = 0
-	goto_scene("StartingRoom")
-	PlayerVariables.save_data()
+	generate_floor_layout()
 
 func set_persistent_state(path, prop_name, value):
 	if !("persistent_state" in current_layout[current_layout_index]):

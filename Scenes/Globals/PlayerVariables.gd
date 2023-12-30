@@ -72,7 +72,9 @@ func increase_health(points):
 	health += points
 	if health <= 0:
 		health = default_health
+		floor = 1
 		SceneManager.on_death()
+		save_data()
 	GUI.update_health_label()
 
 func purchase_upgrade(upgrade_name):
