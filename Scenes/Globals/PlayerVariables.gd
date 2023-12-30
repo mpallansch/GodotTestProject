@@ -40,6 +40,7 @@ var upgrades = [{
 var health = 0
 var experience = 0
 var current_speed = 0
+var kills = 0
 var floor = 1
 var player
 var current_save = "Default"
@@ -86,7 +87,7 @@ func purchase_upgrade(upgrade_name):
 func save_data():
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.WRITE)
 
-	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades, "floor": floor, "layout": SceneManager.current_layout, "layout_index": SceneManager.current_layout_index})
+	var json_string = JSON.stringify({"experience": experience, "upgrades": upgrades, "floor": floor, "kills": kills, "layout": SceneManager.current_layout, "layout_index": SceneManager.current_layout_index})
 
 	save_game.store_line(json_string)
 	
@@ -120,6 +121,9 @@ func load_data(save):
 		
 		if "floor" in loaded_data:
 			floor = loaded_data["floor"]
+			
+		if "kills" in loaded_data:
+			kills = loaded_data["kills"]
 		
 		if "layout" in loaded_data && "layout_index" in loaded_data:
 			SceneManager.set_layout(loaded_data["layout"], loaded_data["layout_index"])
@@ -141,6 +145,10 @@ func get_player():
 	
 func increment_floor():
 	floor += 1
+	save_data()
+	
+func increment_kills():
+	kills += 1
 	save_data()
 
 

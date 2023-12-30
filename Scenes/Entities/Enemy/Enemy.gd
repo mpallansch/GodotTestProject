@@ -23,6 +23,7 @@ func _ready():
 	var current_scale = %AnimatedSprite2D.get_scale()
 	%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
 	%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
+	%PacifistIndicator.color = Color(0, 0, 0, clamp(PlayerVariables.kills * .05, 0.0, 0.5))
 	pass # Replace with function body.
 
 
@@ -50,6 +51,7 @@ func on_damage(damage):
 	if health <= 0:
 		dead = true
 		$AnimationPlayer.play("death")
+		PlayerVariables.increment_kills()
 		SceneManager.set_persistent_state(get_path(), "dead", true)
 		
 func update_heatlh_bar():

@@ -550,5 +550,13 @@ libraries = {
 "": SubResource("AnimationLibrary_sfl5j")
 }
 
+[node name="PacifistIndicator" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -63.0
+offset_top = -43.0
+offset_right = 59.0
+offset_bottom = 109.0
+color = Color(0, 0, 0, 0)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_shape_entered" from="AnimatedSprite2D/Area2D2" to="AnimatedSprite2D/Area2D2" method="_on_area_shape_entered"]
