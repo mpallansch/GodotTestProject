@@ -98,25 +98,24 @@ color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_khi2g")]
 unique_name_in_owner = true
-position = Vector2(22, 517)
 
 [node name="Exit" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(25, 442)
+position = Vector2(81, 555)
 script = ExtResource("2_5i753")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(297, 216)
+position = Vector2(236, 106)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Enter" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(12, 403)
+position = Vector2(-110, 554)
 script = ExtResource("5_4hq5j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
-position = Vector2(-190, 5)
+position = Vector2(-73, -150)
 shape = SubResource("RectangleShape2D_6h1kt")
 
 [node name="Node" type="Node" parent="."]
@@ -127,7 +126,7 @@ metadata/spawn_child_empty_chance = 0.3
 position = Vector2(481, 438)
 
 [node name="MeleeEnemy" parent="Node" instance=ExtResource("7_vhypl")]
-position = Vector2(557, 429)
+position = Vector2(544, 459)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]

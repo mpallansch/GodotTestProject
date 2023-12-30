@@ -97,23 +97,22 @@ color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Exit" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(978, 436)
+position = Vector2(977, 540)
 script = ExtResource("2_p1xev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(165, -46)
+position = Vector2(168, -139)
 shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Player" parent="." instance=ExtResource("3_d6puq")]
 unique_name_in_owner = true
-position = Vector2(1, 524)
 
 [node name="UpgradeChest" parent="." instance=ExtResource("4_leoau")]
 position = Vector2(434, 471)
 
 [node name="Enter" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-1, 453)
+position = Vector2(-1, 544)
 
 [node name="Npc" parent="." instance=ExtResource("6_grg7p")]
 position = Vector2(852, 569)

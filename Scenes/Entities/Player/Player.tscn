@@ -443,16 +443,16 @@ position = Vector2(0, -4)
 script = ExtResource("1_41m2r")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-2, -528)
+position = Vector2(-2, -128)
 scale = Vector2(100, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, -440)
+position = Vector2(-1, -65)
 shape = SubResource("RectangleShape2D_n6oqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
-position = Vector2(56, -490)
+position = Vector2(56, -115)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_4upot")
 animation = &"attack"
