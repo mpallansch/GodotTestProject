@@ -20,6 +20,7 @@ SceneManager="*res://Scenes/Globals/SceneManager.gd"
 GUI="*res://Scenes/Globals/GUI.tscn"
 PlayerVariables="*res://Scenes/Globals/PlayerVariables.tscn"
 PauseMenu="*res://Scenes/Globals/PauseMenu.tscn"
+AudioManager="*res://Scenes/Globals/Audio/AudioManager.tscn"
 
 [display]
 
