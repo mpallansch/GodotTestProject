@@ -88,6 +88,9 @@ func purchase_upgrade(upgrade_name):
 	
 	save_data()
 	
+func delete_data(save):
+	DirAccess.remove_absolute("user://" + save + ".save")	
+	
 func save_data():
 	var save_game = FileAccess.open("user://" + current_save + ".save", FileAccess.WRITE)
 

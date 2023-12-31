@@ -20,8 +20,18 @@ func _process(delta):
 	
 func update_save_label(save, is_empty, upgrades, experience):
 	if !(save in save_buttons_map):
+		var container = HBoxContainer.new()
+		container.add_theme_constant_override("separation", 50)
 		save_buttons_map[save] = Button.new()
-		slots_list.add_child(save_buttons_map[save])
+		save_buttons_map[save].set_custom_minimum_size(Vector2(800,0))
+		container.add_child(save_buttons_map[save])
+		if !is_empty:
+			var delete_button = Button.new()
+			delete_button.text = "Delete"
+			delete_button.add_theme_font_size_override("font_size", 45)
+			delete_button.connect("pressed", get_on_delete_selected(save, delete_button))
+			container.add_child(delete_button)
+		slots_list.add_child(container)
 		save_buttons_map[save].add_theme_font_size_override("font_size", 45)
 		save_buttons_map[save].connect("pressed", get_on_load_selected(save))
 	
@@ -65,3 +75,10 @@ func get_on_load_selected(save):
 	var save_name = save
 	return func on_load_selected():
 		PlayerVariables.load_data(save_name)
+
+func get_on_delete_selected(save, delete_button):
+	var save_name = save
+	return func on_delete_selected():
+		PlayerVariables.delete_data(save_name)
+		delete_button.queue_free()
+		load_save_info(save)
