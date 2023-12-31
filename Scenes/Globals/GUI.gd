@@ -2,6 +2,8 @@ extends Node2D
 
 const hidden_scenes = ["MainMenu", "SettingsMenu", "LoadMenu"]
 
+@onready var popup_scene = preload("res://Scenes/Entities/Popup/Popup.tscn")
+
 @onready var health_label = %HealthLabel
 @onready var experience_label = %ExperienceLabel
 @onready var scene_label = %SceneLabel
@@ -35,3 +37,10 @@ func hide_if_not_playing(scene_name):
 		
 func scene_change(scene_name):
 	scene_label.text = scene_name
+	
+func create_popup(x, y, text):
+	var popup = popup_scene.instantiate()
+	popup.set_meta("label_text", text)
+	add_child(popup)
+	popup.position.x = x
+	popup.position.y = y

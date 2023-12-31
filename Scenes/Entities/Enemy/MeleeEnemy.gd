@@ -35,6 +35,9 @@ func _ready():
 func _process(delta):
 	if dead:
 		if !$AnimationPlayer.current_animation:
+			PlayerVariables.increment_kills()
+			SceneManager.set_persistent_state(get_path(), "dead", true)
+			GUI.create_popup(position.x, position.y, "+" + str(experience) + "xp")
 			PlayerVariables.increase_experience(experience)
 			queue_free()
 	else:
@@ -70,8 +73,6 @@ func on_damage(damage):
 	if health <= 0:
 		dead = true
 		play_animation("death")
-		PlayerVariables.increment_kills()
-		SceneManager.set_persistent_state(get_path(), "dead", true)
 		
 func update_heatlh_bar():
 	health_bar.size.x = health_bar_container.size.x * (health / max_health)

@@ -31,7 +31,10 @@ func _ready():
 func _process(delta):
 	if dead:
 		if !$AnimationPlayer.current_animation:
+			GUI.create_popup(position.x, position.y, "+" + str(experience) + "xp")
+			PlayerVariables.increment_kills()
 			PlayerVariables.increase_experience(experience)
+			SceneManager.set_persistent_state(get_path(), "dead", true)
 			queue_free()
 	else:
 		delay += delta
@@ -40,19 +43,17 @@ func _process(delta):
 			var projectile = projectile_scene.instantiate()
 			add_child(projectile)
 			$AnimationPlayer.play("attack")
-			#projectile.position = Vector2()
 		if !$AnimationPlayer.current_animation:
 			$AnimationPlayer.play("idle")
 
 func on_damage(damage):
 	health -= damage
 	update_heatlh_bar()
-	$AnimationPlayer.play("hurt")
 	if health <= 0:
 		dead = true
 		$AnimationPlayer.play("death")
-		PlayerVariables.increment_kills()
-		SceneManager.set_persistent_state(get_path(), "dead", true)
+	else:
+		$AnimationPlayer.play("hurt")
 		
 func update_heatlh_bar():
 	health_bar.size.x = health_bar_container.size.x * (health / max_health)

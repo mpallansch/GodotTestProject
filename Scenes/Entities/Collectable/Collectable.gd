@@ -23,8 +23,10 @@ func on_apply_persistent_state(persistent_state):
 func _on_area_2d_body_entered(body):
 	if body.owner.name == "Player":
 		if has_meta("increase_health"):
+			GUI.create_popup(position.x, position.y - 80, "+" + str(get_meta("increase_health")) + "hp")
 			PlayerVariables.increase_health(get_meta("increase_health"))
 		if has_meta("increase_experience"):
+			GUI.create_popup(position.x, position.y - 80, "+" + str(get_meta("increase_experience")) + "xp")
 			PlayerVariables.increase_experience(get_meta("increase_experience"))
 		SceneManager.set_persistent_state(get_path(), "collected", true)
 		queue_free()
