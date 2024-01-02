@@ -5,7 +5,7 @@ const debug = true
 const default_speed = 650.0
 const default_health = 10
 
-var upgrades = [{
+var default_upgrades = [{
 	"name": "Increase Speed",
 	"price": 5,
 	"purchased": false
@@ -39,6 +39,7 @@ var upgrades = [{
 	"purchased": false
 }]
 
+var upgrades = default_upgrades
 var health = 0
 var experience = 0
 var current_speed = 0
@@ -59,6 +60,8 @@ func enforce_defaults():
 	health = default_health
 	current_speed = default_speed
 	experience = 0
+	floor = 1
+	upgrades = default_upgrades
 	GUI.update_health_label()
 	GUI.update_experience_label()
 	
@@ -141,8 +144,11 @@ func load_data(save):
 	
 func apply_upgrades():
 	for upgrade in upgrades:
-		if upgrade["purchased"] && upgrade["name"] == "Increase Speed":
-			current_speed = default_speed * 2
+		if upgrade["name"] == "Increase Speed":
+			if upgrade["purchased"]:
+				current_speed = default_speed * 2
+			else:
+				current_speed = default_speed
 			
 func store_player_referece(player_ref):
 	player = player_ref
