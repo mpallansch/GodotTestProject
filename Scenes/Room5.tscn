@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8cd6b8vyapa1"]
+[gd_scene load_steps=10 format=3 uid="uid://b8cd6b8vyapa1"]
 
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_e1ym1"]
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_tl8sk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_mjxos"]
 [ext_resource type="PackedScene" uid="uid://dh0so5chbirco" path="res://Scenes/Entities/Enemy/MeleeEnemy.tscn" id="4_k7no0"]
 [ext_resource type="Script" path="res://Scenes/Enter.gd" id="5_ki37y"]
+[ext_resource type="PackedScene" uid="uid://0vjm83ykh116" path="res://Scenes/Entities/Enemy/MageEnemy.tscn" id="7_6g7if"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jevv3"]
 size = Vector2(20, 373)
@@ -100,10 +101,6 @@ color = Color(0.14902, 0.14902, 0.14902, 1)
 [node name="Player" parent="." instance=ExtResource("3_mjxos")]
 unique_name_in_owner = true
 
-[node name="MageEnemy" parent="." instance=ExtResource("4_k7no0")]
-position = Vector2(480, 462)
-metadata/spawn_chance = 0.5
-
 [node name="Exit" type="Area2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-89, 553)
@@ -122,6 +119,17 @@ script = ExtResource("5_ki37y")
 position = Vector2(-13, -200)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_nvfan")
+
+[node name="Node" type="Node" parent="."]
+metadata/spawn_child = true
+metadata/spawn_child_empty_chance = 0.2
+
+[node name="MeleeEnemy" parent="Node" instance=ExtResource("4_k7no0")]
+position = Vector2(480, 462)
+metadata/spawn_chance = 0.5
+
+[node name="MageEnemy" parent="Node" instance=ExtResource("7_6g7if")]
+position = Vector2(481, 443)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
