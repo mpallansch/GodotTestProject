@@ -452,7 +452,7 @@ shape = SubResource("RectangleShape2D_n6oqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
-z_index = 1
+z_index = 2
 position = Vector2(56, -115)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_4upot")
