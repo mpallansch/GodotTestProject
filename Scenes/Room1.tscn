@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b58otgc5sbmnh"]
+[gd_scene load_steps=19 format=3 uid="uid://b58otgc5sbmnh"]
 
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_nc6lr"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_5i753"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://csuomt7u0q7vd" path="res://Sprites/MidnightMoon.png" id="8_hpk1q"]
 [ext_resource type="Texture2D" uid="uid://cohsle8x862a" path="res://Sprites/MidnightLampPost.png" id="9_pvo6i"]
 [ext_resource type="Texture2D" uid="uid://dbbtv3vo57u0m" path="res://Sprites/MidnightStars.png" id="10_4ye7c"]
+[ext_resource type="Texture2D" uid="uid://l3nsqxyd38uy" path="res://Sprites/MidnightBuildings.png" id="10_y3ls4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -169,24 +170,6 @@ texture = ExtResource("7_6sjhm")
 5:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:10/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgfxt"]
-texture = ExtResource("8_hpk1q")
-texture_region_size = Vector2i(32, 64)
-0:0/animation_frame_0/duration = 0.5
-0:0/animation_frame_1/duration = 0.5
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3jm4"]
-texture = ExtResource("9_pvo6i")
-texture_region_size = Vector2i(32, 64)
-0:0/animation_frame_0/duration = 0.3
-0:0/animation_frame_1/duration = 0.3
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y26my"]
 texture = ExtResource("10_4ye7c")
 0:1/0 = 0
@@ -214,12 +197,46 @@ texture = ExtResource("10_4ye7c")
 3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:2/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qwkyi"]
+texture = ExtResource("10_y3ls4")
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxao8"]
+texture = ExtResource("9_pvo6i")
+texture_region_size = Vector2i(32, 64)
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4tai"]
+texture = ExtResource("8_hpk1q")
+texture_region_size = Vector2i(32, 64)
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_kq0gw"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qr51b")
-sources/1 = SubResource("TileSetAtlasSource_mgfxt")
-sources/2 = SubResource("TileSetAtlasSource_n3jm4")
 sources/3 = SubResource("TileSetAtlasSource_y26my")
+sources/4 = SubResource("TileSetAtlasSource_qwkyi")
+sources/6 = SubResource("TileSetAtlasSource_gxao8")
+sources/7 = SubResource("TileSetAtlasSource_e4tai")
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource("1_nc6lr")
@@ -262,11 +279,13 @@ layer_1/tile_data = PackedInt32Array(327691, 131072, 2, 327690, 131072, 2, 32768
 layer_2/name = "Cloud"
 layer_2/tile_data = PackedInt32Array(4, 262144, 9, 65540, 262144, 10, 5, 327680, 9, 65541, 327680, 10, 65537, 262144, 9, 131073, 262144, 10, 65538, 327680, 9, 131074, 327680, 10, 196607, 262144, 9, 262143, 262144, 10, 131072, 327680, 9, 196608, 327680, 10)
 layer_3/name = "Moon"
-layer_3/tile_data = PackedInt32Array(262146, 2, 0, 262152, 2, 0)
-layer_4/name = "Lamp"
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = "Stars"
-layer_5/tile_data = PackedInt32Array(262151, 3, 2, 131076, 131075, 2)
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Stars"
+layer_4/tile_data = PackedInt32Array(262151, 3, 2, 131076, 131075, 2)
+layer_5/name = "Buildings"
+layer_5/tile_data = PackedInt32Array(262154, 4, 1, 327690, 4, 2, 262155, 65540, 1, 327691, 65540, 2, 262152, 4, 1, 327688, 4, 2, 262153, 65540, 1, 327689, 65540, 2, 262150, 4, 1, 327686, 4, 2, 262151, 65540, 1, 327687, 65540, 2, 262148, 4, 1, 327684, 4, 2, 262149, 65540, 1, 327685, 65540, 2, 262146, 4, 1, 327682, 4, 2, 262147, 65540, 1, 327683, 65540, 2, 262144, 4, 1, 327680, 4, 2, 262145, 65540, 1, 327681, 65540, 2, 327678, 4, 1, 393214, 4, 2, 327679, 65540, 1, 393215, 65540, 2)
+layer_6/name = "Lamp"
+layer_6/tile_data = PackedInt32Array(262152, 6, 0, 262145, 6, 0)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
