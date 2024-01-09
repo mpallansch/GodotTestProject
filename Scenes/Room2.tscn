@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6hqehojqd88"]
+[gd_scene load_steps=10 format=3 uid="uid://6hqehojqd88"]
 
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_e1ym1"]
 [ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_tl8sk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_mjxos"]
 [ext_resource type="PackedScene" uid="uid://dh0so5chbirco" path="res://Scenes/Entities/Enemy/MeleeEnemy.tscn" id="4_k7no0"]
 [ext_resource type="Script" path="res://Scenes/Enter.gd" id="5_ki37y"]
+[ext_resource type="TileSet" uid="uid://cv05hrhfinobv" path="res://Scenes/Globals/BackgroundTileSet.tres" id="7_gyawy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -121,6 +122,12 @@ script = ExtResource("5_ki37y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
 position = Vector2(-99, -130)
 shape = SubResource("RectangleShape2D_jevv3")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(6, 6)
+tile_set = ExtResource("7_gyawy")
+format = 2
+layer_0/tile_data = PackedInt32Array(65544, 196608, 5, 5, 1, 0)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
