@@ -435,8 +435,8 @@ shape = SubResource("RectangleShape2D_n6oqp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(-12, -52)
-scale = Vector2(2.5, 2.5)
+position = Vector2(2, -67)
+scale = Vector2(2.83036, 3.03571)
 sprite_frames = SubResource("SpriteFrames_4upot")
 animation = &"attack"
 frame = 3

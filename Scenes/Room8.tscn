@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cb5mfbyej1cs0"]
 
-[ext_resource type="PackedScene" uid="uid://vy2aiv6dvh5b" path="res://Scenes/Entities/Platform/platform.tscn" id="1_7dddf"]
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_nc6lr"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_5i753"]
 [ext_resource type="PackedScene" uid="uid://c3udb2ngrpat" path="res://Scenes/Entities/Player/Player.tscn" id="3_khi2g"]
 [ext_resource type="PackedScene" uid="uid://0vjm83ykh116" path="res://Scenes/Entities/Enemy/MageEnemy.tscn" id="4_xbkqk"]
 [ext_resource type="Script" path="res://Scenes/Enter.gd" id="5_4hq5j"]
+[ext_resource type="TileSet" uid="uid://cv05hrhfinobv" path="res://Scenes/Globals/BackgroundTileSet.tres" id="7_7jkjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
@@ -15,88 +15,6 @@ size = Vector2(26, 397)
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource("1_nc6lr")
-
-[node name="Platforms" type="Node" parent="."]
-
-[node name="Ground" type="Node" parent="Platforms"]
-
-[node name="Platform1" parent="Platforms/Ground" instance=ExtResource("1_7dddf")]
-position = Vector2(0, 600)
-
-[node name="Platform3" parent="Platforms/Ground" instance=ExtResource("1_7dddf")]
-position = Vector2(646, 600)
-
-[node name="Platform4" parent="Platforms/Ground" instance=ExtResource("1_7dddf")]
-position = Vector2(969, 600)
-
-[node name="Platform2" parent="Platforms/Ground" instance=ExtResource("1_7dddf")]
-position = Vector2(65, 250)
-
-[node name="WallLeft" type="Node" parent="Platforms"]
-
-[node name="Platform1" parent="Platforms/WallLeft" instance=ExtResource("1_7dddf")]
-position = Vector2(-124, 89)
-rotation = 1.5708
-
-[node name="Platform2" parent="Platforms/WallLeft" instance=ExtResource("1_7dddf")]
-position = Vector2(-124, 412)
-rotation = 1.5708
-
-[node name="WallRight" type="Node" parent="Platforms"]
-
-[node name="Platform1" parent="Platforms/WallRight" instance=ExtResource("1_7dddf")]
-position = Vector2(1089, 82)
-rotation = -1.5708
-
-[node name="Platform2" parent="Platforms/WallRight" instance=ExtResource("1_7dddf")]
-position = Vector2(1089, 404)
-rotation = -1.5708
-
-[node name="Cieling" type="Node" parent="Platforms"]
-
-[node name="Platform1" parent="Platforms/Cieling" instance=ExtResource("1_7dddf")]
-position = Vector2(-4, -107)
-rotation = 3.14159
-
-[node name="Platform3" parent="Platforms/Cieling" instance=ExtResource("1_7dddf")]
-position = Vector2(643, -107)
-rotation = 3.14159
-
-[node name="Platform4" parent="Platforms/Cieling" instance=ExtResource("1_7dddf")]
-position = Vector2(965, -107)
-rotation = 3.14159
-
-[node name="Visuals" type="Node" parent="."]
-
-[node name="Shadow1" type="ColorRect" parent="Visuals"]
-offset_left = -4364.0
-offset_top = -2090.0
-offset_right = -168.0
-offset_bottom = 2431.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Shadow2" type="ColorRect" parent="Visuals"]
-offset_left = 1131.0
-offset_top = -2107.0
-offset_right = 5553.0
-offset_bottom = 2425.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Shadow3" type="ColorRect" parent="Visuals"]
-offset_left = 1455.0
-offset_top = -2113.0
-offset_right = 3414.0
-offset_bottom = -63.0
-rotation = 1.5708
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Shadow4" type="ColorRect" parent="Visuals"]
-offset_left = 1593.0
-offset_top = 645.0
-offset_right = 3349.0
-offset_bottom = 2745.0
-rotation = 1.5708
-color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_khi2g")]
 unique_name_in_owner = true
@@ -110,7 +28,7 @@ position = Vector2(53, 553)
 script = ExtResource("2_5i753")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Exit"]
-position = Vector2(264, 104)
+position = Vector2(285, 104)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_nvfan")
 
@@ -121,9 +39,19 @@ script = ExtResource("5_4hq5j")
 metadata/spawn_chance = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
-position = Vector2(185, -297)
+position = Vector2(192, -325)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6h1kt")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(6, 6)
+tile_set = ExtResource("7_7jkjk")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(458750, 0, 1, 524286, 0, 2, 458751, 65536, 1, 524287, 65536, 2, 393216, 131072, 1, 458752, 131072, 2, 393217, 196608, 1, 458753, 196608, 2, 393221, 0, 1, 458757, 0, 2, 393222, 65536, 1, 458758, 65536, 2, 393223, 131072, 1, 458759, 131072, 2, 393224, 196608, 1, 458760, 196608, 2, 393225, 0, 1, 458761, 0, 2, 393226, 65536, 1, 458762, 65536, 2, 393227, 131072, 1, 458763, 131072, 2, -65538, 131072, 5, -65537, 196608, 5, -131072, 262144, 5, -131071, 327680, 5, -131067, 131072, 5, -131066, 196608, 5, -131065, 262144, 5, -131064, 327680, 5, -131063, 131072, 5, -131062, 196608, 5, -131061, 262144, 5, -65525, 262144, 5, 11, 262144, 5, 65547, 262144, 5, 131083, 262144, 5, 196619, 262144, 5, 262155, 262144, 5, 327691, 262144, 5, -2, 131072, 5, 65534, 131072, 5, 131070, 131072, 5, 196606, 131072, 5, 262142, 131072, 5, 327678, 131072, 5, 393214, 131072, 5, 196607, 196608, 5, 131072, 262144, 5, 131073, 327680, 5, 131074, 131072, 5)
+layer_1/name = "BG"
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(-65538, 0, 2, -2, 0, 2, 65534, 0, 2, 131070, 0, 2, 196606, 0, 2, 262142, 0, 2, 327678, 0, 2, 393214, 0, 2, 458750, 0, 2, 524286, 0, 2, -65537, 0, 2, -1, 0, 2, 65535, 0, 2, 131071, 0, 2, 196607, 0, 2, 262143, 0, 2, 327679, 0, 2, 393215, 0, 2, 458751, 0, 2, 524287, 0, 2, -131072, 0, 2, -65536, 0, 2, 0, 0, 2, 65536, 0, 2, 131072, 0, 2, 196608, 0, 2, 262144, 0, 2, 327680, 0, 2, 393216, 0, 2, 458752, 0, 2, -131071, 0, 2, -65535, 0, 2, 1, 0, 2, 65537, 0, 2, 131073, 0, 2, 196609, 0, 2, 262145, 0, 2, 327681, 0, 2, 393217, 0, 2, 458753, 0, 2, -131070, 0, 2, -65534, 0, 2, 2, 0, 2, 65538, 0, 2, 131074, 0, 2, 196610, 0, 2, 262146, 0, 2, 327682, 0, 2, 393218, 0, 2, 458754, 0, 2, -131069, 0, 2, -65533, 0, 2, 3, 0, 2, 65539, 0, 2, 131075, 0, 2, 196611, 0, 2, 262147, 0, 2, 327683, 0, 2, 393219, 0, 2, 458755, 0, 2, -131068, 0, 2, -65532, 0, 2, 4, 0, 2, 65540, 0, 2, 131076, 0, 2, 196612, 0, 2, 262148, 0, 2, 327684, 0, 2, 393220, 0, 2, 458756, 0, 2, -131067, 0, 2, -65531, 0, 2, 5, 0, 2, 65541, 0, 2, 131077, 0, 2, 196613, 0, 2, 262149, 0, 2, 327685, 0, 2, 393221, 0, 2, 458757, 0, 2, -131066, 0, 2, -65530, 0, 2, 6, 0, 2, 65542, 0, 2, 131078, 0, 2, 196614, 0, 2, 262150, 0, 2, 327686, 0, 2, 393222, 0, 2, 458758, 0, 2, -131065, 0, 2, -65529, 0, 2, 7, 0, 2, 65543, 0, 2, 131079, 0, 2, 196615, 0, 2, 262151, 0, 2, 327687, 0, 2, 393223, 0, 2, 458759, 0, 2, -131064, 0, 2, -65528, 0, 2, 8, 0, 2, 65544, 0, 2, 131080, 0, 2, 196616, 0, 2, 262152, 0, 2, 327688, 0, 2, 393224, 0, 2, 458760, 0, 2, -131063, 0, 2, -65527, 0, 2, 9, 0, 2, 65545, 0, 2, 131081, 0, 2, 196617, 0, 2, 262153, 0, 2, 327689, 0, 2, 393225, 0, 2, 458761, 0, 2, -131062, 0, 2, -65526, 0, 2, 10, 0, 2, 65546, 0, 2, 131082, 0, 2, 196618, 0, 2, 262154, 0, 2, 327690, 0, 2, 393226, 0, 2, 458762, 0, 2, -131061, 0, 2, -65525, 0, 2, 11, 0, 2, 65547, 0, 2, 131083, 0, 2, 196619, 0, 2, 262155, 0, 2, 327691, 0, 2, 393227, 0, 2, 458763, 0, 2)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
