@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6hqehojqd88"]
+[gd_scene load_steps=15 format=3 uid="uid://6hqehojqd88"]
 
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_e1ym1"]
 [ext_resource type="Script" path="res://Scenes/Globals/Area2D.gd" id="2_plxbl"]
@@ -6,12 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://dh0so5chbirco" path="res://Scenes/Entities/Enemy/MeleeEnemy.tscn" id="4_k7no0"]
 [ext_resource type="Script" path="res://Scenes/Enter.gd" id="5_ki37y"]
 [ext_resource type="TileSet" uid="uid://cv05hrhfinobv" path="res://Scenes/Globals/BackgroundTileSet.tres" id="7_gyawy"]
+[ext_resource type="Script" path="res://Scenes/Lever.gd" id="7_oyw56"]
+[ext_resource type="Script" path="res://Scenes/Spikes.gd" id="8_b5u4k"]
+[ext_resource type="Script" path="res://Scenes/Door.gd" id="9_k7ab1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfan"]
 size = Vector2(26, 311)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jevv3"]
 size = Vector2(20, 373)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prodf"]
+size = Vector2(20, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhnx3"]
+size = Vector2(300, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pll7f"]
+size = Vector2(44, 302)
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource("1_e1ym1")
@@ -29,7 +41,7 @@ position = Vector2(1077, 550)
 script = ExtResource("2_plxbl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(71, -146)
+position = Vector2(69, -118)
 shape = SubResource("RectangleShape2D_nvfan")
 
 [node name="Enter" type="Area2D" parent="."]
@@ -51,5 +63,62 @@ layer_1/name = "BG"
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array(393214, 0, 2, 327678, 0, 2, 262142, 0, 2, 262143, 0, 2, 327679, 0, 2, 393215, 0, 2, 327680, 0, 2, 262144, 0, 2, 196608, 0, 2, 131072, 0, 2, 196607, 0, 2, -65538, 0, 2, -2, 0, 2, 65534, 0, 2, 131070, 0, 2, 196606, 0, 2, -65537, 0, 2, -1, 0, 2, 65535, 0, 2, 131071, 0, 2, -131072, 0, 2, -65536, 0, 2, 0, 0, 2, 65536, 0, 2, -131071, 0, 2, -65535, 0, 2, 1, 0, 2, 65537, 0, 2, 131073, 0, 2, 196609, 0, 2, 262145, 0, 2, 327681, 0, 2, -131070, 0, 2, -65534, 0, 2, 2, 0, 2, 65538, 0, 2, 131074, 0, 2, 196610, 0, 2, 262146, 0, 2, 327682, 0, 2, -131069, 0, 2, -65533, 0, 2, 3, 0, 2, 65539, 0, 2, 131075, 0, 2, 196611, 0, 2, 262147, 0, 2, 327683, 0, 2, -131068, 0, 2, -65532, 0, 2, 4, 0, 2, 65540, 0, 2, 131076, 0, 2, 196612, 0, 2, 262148, 0, 2, 327684, 0, 2, -131067, 0, 2, -65531, 0, 2, 5, 0, 2, 65541, 0, 2, 131077, 0, 2, 196613, 0, 2, 262149, 0, 2, 327685, 0, 2, -131066, 0, 2, -65530, 0, 2, 6, 0, 2, 65542, 0, 2, 131078, 0, 2, 196614, 0, 2, 262150, 0, 2, 327686, 0, 2, -131065, 0, 2, -65529, 0, 2, 7, 0, 2, 65543, 0, 2, 131079, 0, 2, 196615, 0, 2, 262151, 0, 2, 327687, 0, 2, -131064, 0, 2, -65528, 0, 2, 8, 0, 2, 65544, 0, 2, 131080, 0, 2, 196616, 0, 2, 262152, 0, 2, 327688, 0, 2, -131063, 0, 2, -65527, 0, 2, 9, 0, 2, 65545, 0, 2, 131081, 0, 2, 196617, 0, 2, 262153, 0, 2, 327689, 0, 2, -131062, 0, 2, -65526, 0, 2, 10, 0, 2, 65546, 0, 2, 131082, 0, 2, 196618, 0, 2, 262154, 0, 2, 327690, 0, 2, -131061, 0, 2, -65525, 0, 2, 11, 0, 2, 65547, 0, 2, 131083, 0, 2, 196619, 0, 2, 262155, 0, 2, 327691, 0, 2)
 
+[node name="Lever" type="Area2D" parent="."]
+script = ExtResource("7_oyw56")
+
+[node name="LeverSprite" type="ColorRect" parent="Lever"]
+offset_left = 373.0
+offset_top = 79.0
+offset_right = 393.0
+offset_bottom = 191.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever"]
+position = Vector2(382, 135)
+shape = SubResource("RectangleShape2D_prodf")
+
+[node name="Spikes" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_b5u4k")
+
+[node name="ColorRect3" type="ColorRect" parent="Spikes"]
+offset_left = 483.0
+offset_top = 587.0
+offset_right = 523.0
+offset_bottom = 761.0
+
+[node name="ColorRect2" type="ColorRect" parent="Spikes"]
+offset_left = 356.0
+offset_top = 591.0
+offset_right = 396.0
+offset_bottom = 765.0
+
+[node name="ColorRect" type="ColorRect" parent="Spikes"]
+offset_left = 234.0
+offset_top = 589.0
+offset_right = 274.0
+offset_bottom = 763.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(377, 674)
+shape = SubResource("RectangleShape2D_dhnx3")
+
+[node name="Door" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
+freeze = true
+script = ExtResource("9_k7ab1")
+
+[node name="DoorSprite" type="ColorRect" parent="Door"]
+offset_left = 1050.0
+offset_top = 283.0
+offset_right = 1090.0
+offset_bottom = 571.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(1069, 429)
+shape = SubResource("RectangleShape2D_pll7f")
+
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
+[connection signal="body_entered" from="Lever" to="Lever" method="_on_body_entered"]
+[connection signal="body_exited" from="Lever" to="Lever" method="_on_body_exited"]
+[connection signal="area_shape_entered" from="Spikes" to="Spikes" method="_on_area_shape_entered"]

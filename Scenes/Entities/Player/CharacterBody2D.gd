@@ -4,11 +4,14 @@ const JUMP_VELOCITY = -1600.0
 
 signal apply_damage(damage)
 
+@onready var projectile_scene = preload("res://Scenes/Entities/Enemy/Projectile.tscn")
 @onready var animated_sprite = %AnimatedSprite2D
 @onready var sword = %Area2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 3
+
+var facing_forward = true
 
 func _ready():
 	apply_damage.connect(on_damage)
@@ -43,14 +46,24 @@ func _physics_process(delta):
 				if !$AnimationPlayer.current_animation || $AnimationPlayer.current_animation == "run":
 					play_animation("idle")
 					
+	if Input.is_action_just_pressed("ranged"):
+		var projectile = projectile_scene.instantiate()
+		projectile.initialize(300 if facing_forward else -300, true)
+		get_tree().root.add_child(projectile)
+		projectile.position.x = position.x
+		projectile.position.y = position.y - 50
+		
+					
 	if direction < 0:
 		var current_scale = %AnimatedSprite2D.get_scale()
 		if current_scale.x > 0:
+			facing_forward = false
 			%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
 			%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
 	elif direction > 0:
 		var current_scale = %AnimatedSprite2D.get_scale()
 		if current_scale.x < 0:
+			facing_forward = true
 			%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
 			%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
 			

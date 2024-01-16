@@ -6,6 +6,7 @@ const max_health = 15.0
 
 signal enemy_apply_damage(damage)
 signal apply_persistent_state(persistent_state)
+signal freeze(delay)
 
 @onready var projectile_scene = preload("res://Scenes/Entities/Enemy/Projectile.tscn")
 @onready var health_bar = %HealthBar
@@ -13,17 +14,20 @@ signal apply_persistent_state(persistent_state)
 
 var health = max_health
 var delay = 0
+var freeze_delay = 0
 var dead = false
+var color_set = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enemy_apply_damage.connect(on_damage)
 	apply_persistent_state.connect(on_apply_persistent_state)
+	freeze.connect(on_freeze)
 	update_heatlh_bar()
 	var current_scale = %AnimatedSprite2D.get_scale()
 	%AnimatedSprite2D.position.x = %AnimatedSprite2D.position.x * -1
 	%AnimatedSprite2D.set_scale(Vector2(current_scale.x * -1, current_scale.y))
-	%PacifistIndicator.color = Color(0, 0, 0, clamp(PlayerVariables.kills * .05, 0.0, 0.5))
+	set_color()
 	pass # Replace with function body.
 
 
@@ -37,14 +41,20 @@ func _process(delta):
 			SceneManager.set_persistent_state(get_path(), "dead", true)
 			queue_free()
 	else:
-		delay += delta
-		if delay > projectile_interval:
-			delay = 0
-			var projectile = projectile_scene.instantiate()
-			add_child(projectile)
-			$AnimationPlayer.play("attack")
-		if !$AnimationPlayer.current_animation:
-			$AnimationPlayer.play("idle")
+		if freeze_delay > 0:
+			freeze_delay -= delta
+			color_set = false
+			%PacifistIndicator.color =  Color(0, 0, 1, .2)
+		else:
+			set_color()
+			delay += delta
+			if delay > projectile_interval:
+				delay = 0
+				var projectile = projectile_scene.instantiate()
+				add_child(projectile)
+				$AnimationPlayer.play("attack")
+			if !$AnimationPlayer.current_animation:
+				$AnimationPlayer.play("idle")
 
 func on_damage(damage):
 	health -= damage
@@ -61,3 +71,11 @@ func update_heatlh_bar():
 func on_apply_persistent_state(persistent_state):
 	if "dead" in persistent_state && persistent_state["dead"] == true:
 		queue_free()
+		
+func on_freeze(delay):
+	freeze_delay = delay
+	
+func set_color():
+	if !color_set:
+		color_set = true
+		%PacifistIndicator.color = Color(0, 0, 0, clamp(PlayerVariables.kills * .05, 0.0, 0.5))
